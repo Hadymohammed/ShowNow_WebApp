@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Lato&family=Source+Sans+Pro:wght@400;600&display=swap');
+body {
+  width: 98%;
+  height: 100%;
+  margin: 1%;
+  /* margin-top: 10px; */
+  background-color: #131a1e;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 15px;
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+h1,h2,a{
+    margin: 0;
+}
+ul{
+  list-style: none;
+  margin: 0px;
+}
+/*bar styling*/
+.bar{
+  background-color: #2f5b78;
+    padding: 5px;
+    /* margin: 10px; */
+    width: 98%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-radius: 5px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+#logo{
+
+}
+#logo img{  
+
+}
+.inputContainer{
+  display: flex;
+  width: 320px;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  height: 32px;
+  justify-content: space-around;
+  background: white;
+  border-radius: 5px;
+}
+#movieInput{
+  margin: 0px;
+  height: 21px;
+  border: 0px;
+  width: 210px;
+  padding: 2px 5px 2px 5px;
+  /* border-radius: 5px 0px 0px 5px; */
+  font-size: 1rem;
+  outline: none;
+}
+#showBtn{
+  margin: 0px;
+  height: 25px;
+  border: 0px;
+  width: 80px;
+  background-color: #5877ff;
+  color: white;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all .8s;
+}
+#showBtn:hover{
+  background-color:#d9bc1d;
+}
+/************************main******************************/
+main{
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.movieContainer{
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+.poster{
+  width: 250px;
+}
+.poster img{
+  width: 100%;
+  height: auto;
+}
+.movieDetails{
+  margin-left: 30px;
+}
+#movieName{
+  font-size: 5rem;
+  margin-bottom: 10px;
+}
+.detailsItem{
+  font-size: 2rem;
+  margin-left: 16px;
+    margin-bottom: 20px;
+}
+
+/***************overView**************/
+.overviewContainer{
+  margin-bottom: 40px;
+}
+.overview{
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.line{
+  width: 50px;
+  height: 5px;
+  background-color: #d9bc1d;
+  border-radius: 5px;
+  transition: all .8s;
+}
+#overviewContent{
+  margin-left: 10px;
+  font-size: 1.2rem;
+}
+.overviewContainer:hover .line{
+  width: 150px;
+}
+/***********************review******************/
+.reviewContainer{
+
+}
+.review{
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.reviewList{
+  padding: 0px;
+  height: fit-content;
+}
+.reviewBox{
+  height: fit-content;
+  width: 98%;
+  padding: 1%;
+  background-color: white;
+  color: black;
+}
+.reviewDetails{
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.reviewAutherData{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  height: 55px;
+}
+
+.autherPhoto{
+  width: auto;
+  height: 100%;
+}
+.autherPhoto img{
+  height: 100%;
+}
+.auther{
+  margin-left: 10px;
+}
+.autherName{
+  font-size: 1.8rem;
+}
+.autherHandle{
+
+}
+.reviewDate{
+  font-size: 1.5rem;
+}
+.reviewContent{
+  padding: 25px;
+}
+/********media********/
+@media screen and (max-width: 670px) {
+ .bar{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+ }
+ #logo{
+  margin-bottom: 10px;
+ }
+ .movieContainer{
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+ }
+ .movieDetails{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0px;
+ }
+}
