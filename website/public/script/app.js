@@ -1,5 +1,3 @@
-const { count } = require("console");
-
 
 function updateContent(data){
     //update Poster
@@ -47,10 +45,59 @@ function updateContent(data){
     let overviewDiv=document.getElementById('overviewContent');
     let overviewData=data.overview;
     overviewDiv.innerHTML=overviewData;
+
+    //update reviews
+    console.log(data.id);
+    updateReviews(data.id);
 }
+
+
 function getInput(){
     const movie=document.getElementById('movieInput').value;
     return encodeURIComponent(movie);
+}
+
+//update reviews
+async function updateReviews(id){
+    
+    //GET reviews
+    let reviewsRes=await fetch(`reviews/${id}`);
+    let reviews=await reviewsRes.json();
+    console.log(reviews);
+
+    let reviewList=document.getElementById('reviewList');
+    reviewList.innerText="";
+    for(const review of reviews.results){
+        let autherName=review.author;
+        let userName=review.author_details.username;
+        let photoPath=review.author_details.avatar_path;
+
+        if(photoPath!=null&&photoPath.slice(0,6)=="/https")photoPath=photoPath.slice(1,photoPath.length);
+        else photoPath="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
+        console.log(photoPath);
+        let content=review.content;
+        let date=review.created_at;
+
+        let reviewBox=document.createElement('li');
+        reviewBox.className='reviewBox';
+        reviewBox.innerHTML=`
+         <div class="reviewDetails">
+        <div class="reviewAutherData">
+            <div class="autherPhoto">
+                <img src="${photoPath}" alt="">
+            </div>
+            <div class="auther">
+                <div class="autherName">${autherName}</div>
+                <div class="autherHandle">@${userName}</div>
+            </div>
+        </div>
+        <div class="reviewDate">${date}</div>
+    </div>
+    <div class="reviewContent">
+        ${content};
+    </div>`;
+        reviewList.appendChild(reviewBox);
+    }
 }
 async function getServerData(){
     let movie=getInput();

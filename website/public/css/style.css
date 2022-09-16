@@ -148,7 +148,7 @@ main{
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
-.reviewList{
+#reviewList{
   padding: 0px;
   height: fit-content;
 }

@@ -44,3 +44,11 @@ app.get('/all/:movie',async (req,res)=>{
     const mainDataJson=await mainData.json();
     res.json(mainDataJson);}
 });
+app.get('/reviews/:id',async (req,res)=>{
+    const id=req.params.id;
+    const url=`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${apiKey}`;
+    const data=await fetch(url);
+    const dataJson=await data.json();
+    console.log(dataJson);
+    res.json(dataJson);
+})
