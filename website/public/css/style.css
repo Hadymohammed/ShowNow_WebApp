@@ -105,7 +105,7 @@ main{
 .movieDetails{
   margin-left: 30px;
 }
-#movieName{
+#movieNameContainer{
   font-size: 5rem;
   margin-bottom: 10px;
 }
@@ -113,6 +113,9 @@ main{
   font-size: 2rem;
   margin-left: 16px;
     margin-bottom: 20px;
+}
+#country{
+  
 }
 
 /***************overView**************/

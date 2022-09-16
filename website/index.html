@@ -8,7 +8,7 @@
     <script src="./public/script/app.js"></script>
     <title>Show Now</title>
 </head>
-<body>
+<body onload="runMainFunctions()">
    <div class="bar">
     <div id="logo">
         <img src="public/images/logo.svg" alt="Show Now logo">
@@ -21,11 +21,11 @@
    <main>
     <div class="movieContainer">
         <div class="poster">
-            <img src="https://image.tmdb.org/t/p/original/ydtGc9GXq0XGKozNOs0kmzfuuBm.jpg" alt="movie poster">
+            <img id="posterDiv" src="https://image.tmdb.org/t/p/original/ydtGc9GXq0XGKozNOs0kmzfuuBm.jpg" alt="movie poster">
         </div>
         <div class="movieDetails">
-        <div id="movieName">
-            <div>Cast Away</div>
+        <div id="movieNameContainer">
+            <div id="movieName">Cast Away</div>
         </div>
             <div class="detailsItem">
                 Rate: <span id="rate">7.7</span>
@@ -34,7 +34,7 @@
                 Date: <span id="date">22/9/2021</span>
             </div>
             <div class="detailsItem">
-                Country: <span id="country">Egypt</span>
+                Country: <span id="country">EG</span>
             </div>
             <div class="detailsItem">
                 Time: <span id="time">136m</span>
