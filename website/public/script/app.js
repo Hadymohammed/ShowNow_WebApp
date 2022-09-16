@@ -91,7 +91,7 @@ async function updateReviews(id){
                 <div class="autherHandle">@${userName}</div>
             </div>
         </div>
-        <div class="reviewDate">${date}</div>
+        <div class="reviewDate">${date.slice(0,10)}</div>
     </div>
     <div class="reviewContent">
         ${content};
@@ -99,8 +99,9 @@ async function updateReviews(id){
         reviewList.appendChild(reviewBox);
     }
 }
-async function getServerData(){
-    let movie=getInput();
+
+//get movie data requst
+async function getServerData(movie){
     let data=await fetch(`all/${movie}`);
     let dataJson=await data.json();
     if(dataJson.status!="404"){
@@ -109,13 +110,23 @@ async function getServerData(){
    
     console.log(dataJson);
 }
+//show input details
+function showNow(){
+    getServerData(getInput());
+}
 //searchClickEvent
 function createClickListener(){
     const searchBtn=document.getElementById('showBtn');
-    searchBtn.addEventListener('click',getServerData);
+    searchBtn.addEventListener('click',showNow);
 }
 
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+  }
 //run onload
 function runMainFunctions(){
     createClickListener();
+    const movies=["fight club","Cast away","12 angry men","The Shawshank Redemption"," Forrest Gump","The Matrix"];
+    let i=getRndInteger(0,6);
+    getServerData(encodeURIComponent(movies[i]));
 }
