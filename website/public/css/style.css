@@ -106,6 +106,7 @@ main{
 }
 #movieName{
   overflow-wrap: break-word;
+  max-width: 500px;
 }
 #movieNameContainer{
   font-size: 5rem;
@@ -124,6 +125,7 @@ main{
 /***************overView**************/
 .overviewContainer{
   margin-bottom: 40px;
+  width: 98%;
 }
 .overview{
   font-size: 1.5rem;
