@@ -1,5 +1,7 @@
 ### ShowNow WebApp
 Search by your fav movie name and get details using theMovieDB API. Developed to continuation front-end course and using APIs journey as I've built a basic project WeatherMap webapp :  https://github.com/Hadymohammed/Weather-webapp 
+### OverView
+https://user-images.githubusercontent.com/50783061/191636010-c1766e76-ce4f-4e5c-9260-15f95e4b9b1a.mp4
 
 ## Technologies used
 - JavaScript.
@@ -23,4 +25,7 @@ Search by your fav movie name and get details using theMovieDB API. Developed to
 - On the client side, update the UI using new data. 
 
 ## Author
+
+
+
 # Abdelhady Mohamed
