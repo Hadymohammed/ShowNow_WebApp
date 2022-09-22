@@ -52,3 +52,10 @@ app.get('/reviews/:id',async (req,res)=>{
     console.log(dataJson);
     res.json(dataJson);
 })
+app.get('/recommend/:id',async (req,res)=>{
+    const id=req.params.id;
+    const url=`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${apiKey}`;
+    const data=await fetch(url);
+    const dataJson=await data.json();
+    res.json(dataJson);
+})

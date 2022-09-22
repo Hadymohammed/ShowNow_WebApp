@@ -1,4 +1,5 @@
 
+
 function updateContent(data){
     //update Poster
     let poster=document.getElementById('posterDiv');
@@ -45,9 +46,9 @@ function updateContent(data){
     let overviewDiv=document.getElementById('overviewContent');
     let overviewData=data.overview;
     overviewDiv.innerHTML=overviewData;
-
+    
     //update reviews
-    console.log(data.id);
+    updateRecs(data.id);
     updateReviews(data.id);
 }
 
@@ -63,7 +64,6 @@ async function updateReviews(id){
     //GET reviews
     let reviewsRes=await fetch(`reviews/${id}`);
     let reviews=await reviewsRes.json();
-    console.log(reviews);
 
     let reviewList=document.getElementById('reviewList');
     reviewList.innerText="";
@@ -71,7 +71,7 @@ async function updateReviews(id){
         let autherName=review.author;
         let userName=review.author_details.username;
         let photoPath=review.author_details.avatar_path;
-
+        
         if(photoPath!=null&&photoPath.slice(0,6)=="/https")photoPath=photoPath.slice(1,photoPath.length);
         else photoPath="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
         console.log(photoPath);
@@ -92,14 +92,79 @@ async function updateReviews(id){
             </div>
         </div>
         <div class="reviewDate">${date.slice(0,10)}</div>
-    </div>
+        </div>
     <div class="reviewContent">
         ${content};
     </div>`;
         reviewList.appendChild(reviewBox);
     }
 }
-
+//update recommendations
+async function updateRecs(id){
+    //get data
+    let recs=await fetch(`recommend/${id}`);
+    let recsJson=await recs.json();
+   
+    if(recsJson.results.length!=0){
+        //build the container
+        let mySwiperBox=document.getElementsByClassName('mySwiper')[0];
+        mySwiperBox.innerHTML="";
+        mySwiperBox.style='height:400px'
+        const title=document.createElement('div');
+        title.className='review';
+        title.innerHTML='Recommendations';
+        mySwiperBox.appendChild(title);
+        const swiperCont=document.createElement('div');
+        swiperCont.className='swiper-wrapper';
+        //add the recommendations
+        for (const rec of recsJson.results) {
+         
+            const recItem=document.createElement('div');
+            recItem.className='swiper-slide';
+            const imgPath=(rec.poster_path!=null?'https://image.tmdb.org/t/p/original/'+rec.poster_path:'./public/images/posterNotFound.png');
+            const movieName=rec.title;
+            recItem.innerHTML=`<div class="card">
+            <div class="recImage">
+            <img src="${imgPath}" alt="">
+            </div>
+            <div class="recName">${movieName}</div>
+            </div>`;
+            swiperCont.appendChild(recItem);
+        }
+        mySwiperBox.appendChild(swiperCont);
+        //pagination
+        const pag=document.createElement('div');
+        pag.className='swiper-pagination';
+        mySwiperBox.appendChild(pag);
+        let initSlidesNum=(recsJson.results.length<=4?recsJson.results.length:4);
+        //create swiper
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: initSlidesNum,
+          spaceBetween: 30,
+          grapCrusor:true,
+          centerSlide:true,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            dynamicBullets:true,
+          },
+          breakpoints:{
+            0: {
+                slidesPerView:(initSlidesNum-3>0?initSlidesNum-3:1),
+            },
+            500:{
+                slidesPerView:(initSlidesNum-2>0?initSlidesNum-2:1),
+            },
+            800:{
+                slidesPerView:(initSlidesNum-1>0?initSlidesNum-1:1),
+            },
+            1000:{
+                slidesPerView:initSlidesNum,
+            },
+          },
+        });
+    }
+}
 //get movie data requst
 async function getServerData(movie){
     let data=await fetch(`all/${movie}`);
@@ -107,7 +172,7 @@ async function getServerData(movie){
     if(dataJson.status!="404"){
     updateContent(dataJson);}
     else alert("Error");
-   
+    
     console.log(dataJson);
 }
 //show input details
@@ -122,9 +187,12 @@ function createClickListener(){
 
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
-  }
-//run onload
+}
+
 function runMainFunctions(){
+    // swiper
+    
+    //Show event
     createClickListener();
     const movies=["fight club","Cast away","12 angry men","The Shawshank Redemption"," Forrest Gump","The Matrix"];
     let i=getRndInteger(0,6);

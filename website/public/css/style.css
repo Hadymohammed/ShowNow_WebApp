@@ -90,7 +90,7 @@ main{
   height: fit-content;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   margin-bottom: 15px;
 }
@@ -109,7 +109,7 @@ main{
   max-width: 500px;
 }
 #movieNameContainer{
-  font-size: 5rem;
+  font-size: 4rem;
   margin-bottom: 10px;
   text-align: start;
 }
@@ -144,6 +144,71 @@ main{
 }
 .overviewContainer:hover .line{
   width: 150px;
+}
+/*******************swiper***************/
+.swiper {
+  width: 100%;
+}
+.mySwiper{
+  height: 0px;
+}
+/* .swiper-wrapper{
+  justify-content: center;
+} */
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  /* background: #fff; */
+  color: #131a1e;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card{
+  box-sizing: border-box;
+  width: 200px;
+  height: 100%;
+  padding: 10px;
+  /* background-color: #2284bd; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.recImage{
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+.recImage img{
+
+}
+.recName{
+  font-size: 1rem;
+  font-weight: 800;
+    overflow-wrap: break-word;
+    max-width: 180px;
+    color: white;
+}
+/* pagation */
+.swiper-pagination span{
+  background: #d9bc1d;;
 }
 /***********************review******************/
 .reviewContainer{
